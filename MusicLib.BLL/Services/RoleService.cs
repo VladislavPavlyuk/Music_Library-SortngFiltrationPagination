@@ -21,7 +21,7 @@ namespace MusicLib.BLL.Services
             var role = new Role
             {
                 Id = roleDto.Id,
-                Name = roleDto.Name
+                Title = roleDto.Title
             };
             await Database.Roles.Create(role);
 
@@ -33,7 +33,7 @@ namespace MusicLib.BLL.Services
             var role = new Role
             {
                 Id = roleDto.Id,
-                Name = roleDto.Name
+                Title = roleDto.Title
             };
             Database.Roles.Update(role);
 
@@ -64,7 +64,7 @@ namespace MusicLib.BLL.Services
             return new RoleDTO
             {
                 Id = role.Id,
-                Name = role.Name
+                Title = role.Title
             };
         }
 

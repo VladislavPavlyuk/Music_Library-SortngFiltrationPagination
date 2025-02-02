@@ -21,7 +21,7 @@ namespace MusicLib.BLL.Services
             var song = new Song
             {
                 Id = songDto.Id,
-                Name = songDto.Name,
+                Title = songDto.Title,
                 Release = songDto.Release,
                 GenreId = songDto.GenreId,
                 ArtistId = songDto.ArtistId,
@@ -37,7 +37,7 @@ namespace MusicLib.BLL.Services
             var song = new Song
             {
                 Id = songDto.Id,
-                Name = songDto.Name,
+                Title = songDto.Title,
                 Release = songDto.Release,
                 GenreId = songDto.GenreId,
                 ArtistId = songDto.ArtistId,
@@ -65,10 +65,10 @@ namespace MusicLib.BLL.Services
             return new SongDTO
             {
                 Id = song.Id,
-                Name = song.Name,
+                Title = song.Title,
                 Release = song.Release,
                 GenreId = song.GenreId,
-                Genre = song.Genre?.Name,
+                Genre = song.Genre?.Title,
                 ArtistId = song.ArtistId,
                 Artist = song.Artist?.Name,
                 VideoId = song.VideoId,
@@ -81,7 +81,7 @@ namespace MusicLib.BLL.Services
         public async Task<IEnumerable<SongDTO>> GetSongs()
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Song, SongDTO>()
-            .ForMember("Genre", opt => opt.MapFrom(c => c.Genre.Name))
+            .ForMember("Genre", opt => opt.MapFrom(c => c.Genre.Title))
             .ForMember("Artist", opt => opt.MapFrom(c => c.Artist.Name))
             .ForMember("Video", opt => opt.MapFrom(c => c.Video.FileName))
             );

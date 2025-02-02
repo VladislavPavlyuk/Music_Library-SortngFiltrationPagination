@@ -25,9 +25,9 @@ namespace MusicLib.DAL.Repositories
             return role!;
         }
 
-        public async Task<Role> Get(string name)
+        public async Task<Role> Get(string title)
         {
-            var roles = await db.Roles.Where(a => a.Name == name).ToListAsync();
+            var roles = await db.Roles.Where(a => a.Title == title).ToListAsync();
             Role? role = roles?.FirstOrDefault();
             return role!;
         }

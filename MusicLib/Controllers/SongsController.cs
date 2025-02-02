@@ -51,8 +51,8 @@ namespace MusicLib.Controllers
         // GET: Songs/Create
         public async Task<IActionResult> Create()
         {
-            ViewBag.ListGenres = new SelectList(await genreService.GetGenres(), "Id", "Name");
-            ViewBag.ListArtists = new SelectList(await artistService.GetArtists(), "Id", "Name");
+            ViewBag.ListGenres = new SelectList(await genreService.GetGenres(), "Id", "Title");
+            ViewBag.ListArtists = new SelectList(await artistService.GetArtists(), "Id", "Title");
             ViewBag.ListVideos = new SelectList(await videoService.GetVideos(), "Id", "FileName");
             return View();
         }
@@ -67,8 +67,8 @@ namespace MusicLib.Controllers
                 await songService.CreateSong(song);
                 return View("~/Views/Songs/Index.cshtml", await songService.GetSongs());
             }
-            ViewBag.ListGenres = new SelectList(await genreService.GetGenres(), "Id", "Name", song.GenreId);
-            ViewBag.ListArtists = new SelectList(await artistService.GetArtists(), "Id", "Name", song.ArtistId);
+            ViewBag.ListGenres = new SelectList(await genreService.GetGenres(), "Id", "Title", song.GenreId);
+            ViewBag.ListArtists = new SelectList(await artistService.GetArtists(), "Id", "Title", song.ArtistId);
             ViewBag.ListVideos = new SelectList(await videoService.GetVideos(), "Id", "FileName", song.VideoId);
 
             return View(song);
@@ -84,8 +84,8 @@ namespace MusicLib.Controllers
                     return NotFound();
                 }
                 SongDTO song = await songService.GetSong((int)id);
-                ViewBag.ListGenres = new SelectList(await genreService.GetGenres(), "Id", "Name", song.GenreId);
-                ViewBag.ListArtists = new SelectList(await artistService.GetArtists(), "Id", "Name", song.ArtistId);
+                ViewBag.ListGenres = new SelectList(await genreService.GetGenres(), "Id", "Title", song.GenreId);
+                ViewBag.ListArtists = new SelectList(await artistService.GetArtists(), "Id", "Title", song.ArtistId);
                 ViewBag.ListVideos = new SelectList(await videoService.GetVideos(), "Id", "FileName", song.VideoId);
                 return View(song);
             }
@@ -106,8 +106,8 @@ namespace MusicLib.Controllers
                 await songService.UpdateSong(song);
                 return View("~/Views/Songs/Index.cshtml", await songService.GetSongs());
             }
-            ViewBag.ListGenres = new SelectList(await genreService.GetGenres(), "Id", "Name", song.GenreId);
-            ViewBag.ListArtists = new SelectList(await artistService.GetArtists(), "Id", "Name", song.ArtistId);
+            ViewBag.ListGenres = new SelectList(await genreService.GetGenres(), "Id", "Title", song.GenreId);
+            ViewBag.ListArtists = new SelectList(await artistService.GetArtists(), "Id", "Title", song.ArtistId);
             ViewBag.ListVideos = new SelectList(await videoService.GetVideos(), "Id", "FileName", song.VideoId);
             return View(song);
         }

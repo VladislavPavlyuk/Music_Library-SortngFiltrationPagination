@@ -25,9 +25,9 @@ namespace MusicLib.DAL.Repositories
             return genre!;
         }
 
-        public async Task<Genre> Get(string name)
+        public async Task<Genre> Get(string title)
         {
-            var genres = await db.Genres.Where(a => a.Name == name).ToListAsync(); 
+            var genres = await db.Genres.Where(a => a.Title == title).ToListAsync(); 
             Genre? genre = genres?.FirstOrDefault();
             return genre!;
         }

@@ -32,11 +32,11 @@ namespace MusicLib.DAL.Repositories
             return song!;
         }
 
-        public async Task<Song> Get(string name)
+        public async Task<Song> Get(string title)
         {         
-            var songs = await db.Songs.Include(o => o.Genre).Where(a => a.Name == name)
-                .Include(o => o.Artist).Where(a => a.Name == name)
-                .Include(o => o.Video).Where(a => a.Name == name)
+            var songs = await db.Songs.Include(o => o.Genre).Where(a => a.Title == title)
+                .Include(o => o.Artist).Where(a => a.Title == title)
+                .Include(o => o.Video).Where(a => a.Title == title)
                 .ToListAsync();
 
             Song? song = songs?.FirstOrDefault();

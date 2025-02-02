@@ -3,8 +3,9 @@ namespace MusicLib.DAL.Entities
     public class Song
     {
         public int Id { get; set; }
-        public string? Name { get; set; }
+        public string? Title { get; set; }
         public string? Release { get; set; }
+        public string? Link { get; set; }
 
         public Genre? Genre { get; set; }
         public int? GenreId { get; set; }

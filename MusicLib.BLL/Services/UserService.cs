@@ -67,7 +67,7 @@ namespace MusicLib.BLL.Services
                 Password = user.Password,
                 Salt = user.Salt,
                 RoleId = user.RoleId,
-                Role = user.Role?.Name
+                Role = user.Role?.Title
             };
         }
         public async Task<UserDTO> GetUserByEmail(string email)
@@ -86,7 +86,7 @@ namespace MusicLib.BLL.Services
                 Salt = user.Salt,
                 Email = user.Email,
                 RoleId = user.RoleId,
-                Role = user.Role?.Name
+                Role = user.Role?.Title
             };
         }
 
@@ -95,7 +95,7 @@ namespace MusicLib.BLL.Services
         public async Task<IEnumerable<UserDTO>> GetUsers()
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>()
-            .ForMember("Role", opt => opt.MapFrom(c => c.Role.Name))
+            .ForMember("Role", opt => opt.MapFrom(c => c.Role.Title))
             );
 
             var mapper = new Mapper(config);

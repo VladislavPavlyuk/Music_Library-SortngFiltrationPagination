@@ -21,7 +21,7 @@ namespace MusicLib.BLL.Services
             var genre = new Genre
             {
                 Id = genreDto.Id,
-                Name = genreDto.Name
+                Title = genreDto.Title
             };
             await Database.Genres.Create(genre);
 
@@ -33,7 +33,7 @@ namespace MusicLib.BLL.Services
             var genre = new Genre
             {
                 Id = genreDto.Id,
-                Name = genreDto.Name,
+                Title = genreDto.Title,
             };
             Database.Genres.Update(genre);
 
@@ -61,7 +61,7 @@ namespace MusicLib.BLL.Services
             return new GenreDTO
             {
                 Id = genre.Id,
-                Name = genre.Name
+                Title = genre.Title
             };
         }
 

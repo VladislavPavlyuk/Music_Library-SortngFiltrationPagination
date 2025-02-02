@@ -9,10 +9,8 @@ namespace MusicLib.BLL.DTO
     public class VideoDTO
     {
         public int Id { get; set; }
-
-        //[Required(ErrorMessage = "Requred!")]
         public string? FileName { get; set; }
-
         public string? Path { get; set; }
+
     }
 }

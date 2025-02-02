@@ -9,18 +9,18 @@ namespace MusicLib.BLL.DTO
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Requred!")]
-        public string? Name { get; set; }
+        [Required(ErrorMessage = "Title is requred!")]
+        public string? Title { get; set; }
 
-        [Required(ErrorMessage = "Requred!")]
+        [DataType(DataType.Date)]
         public string? Release { get; set; }
 
+        [DataType(DataType.Url)]
+        public string? Link { get; set; }
         public int? GenreId { get; set; }
         public string? Genre { get; set; }
-
         public int? ArtistId { get; set; }
         public string? Artist { get; set; }
-
         public int? VideoId { get; set; }
         public string? Video { get; set; }
     }

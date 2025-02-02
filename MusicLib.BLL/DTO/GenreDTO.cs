@@ -9,8 +9,8 @@ namespace MusicLib.BLL.DTO
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Requred!")]
-        public string? Name { get; set; }
+        [Required(ErrorMessage = "Title is requred!")]
+        public string? Title { get; set; }
 
     }
 }

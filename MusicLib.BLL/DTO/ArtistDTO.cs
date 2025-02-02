@@ -9,10 +9,10 @@ namespace MusicLib.BLL.DTO
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Requred!")]
+        [Required(ErrorMessage = "Name is requred!")]
         public string? Name { get; set; }
 
-        [Required(ErrorMessage = "Requred!")]
+        [DataType(DataType.Date)]   
         public string? Birthdate { get; set; }
     }
 }
