@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MusicLib.BLL.DTO.GenreDTO> 
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Genres</h2>
+<p>
+    <a asp-action="Create">Add a new Genre</a>
+</p>
+<table class="table-condensed" style="width:100%">
+    <tr>
+        <th>
+            @Html.Label("Genre")
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
