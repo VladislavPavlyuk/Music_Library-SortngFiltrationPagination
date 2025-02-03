@@ -29,7 +29,7 @@ namespace MusicLib.Controllers
         public async Task<IActionResult> Index(string sortOrder)
         {
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? SortState.SongTitleDescending : "";
-            ViewData["DateSortParm"] = sortOrder == "date" ? SortState.SongReleaseDateAscending : "date";
+            ViewData["DateSortParm"] = sortOrder == SortState.SongReleaseDateAscending.ToString() ? SortState.SongReleaseDateDescending.ToString() : SortState.SongReleaseDateAscending.ToString();
 
             var items = await songService.GetSortedItemsAsync(sortOrder);
 
