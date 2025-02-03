@@ -14,11 +14,26 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
+
         <dt class = "col-sm-2">
             @Html.Label("Release:")
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Release)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.Label("File:")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Video)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.Label("Youtube Link:")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YoutubeLink)
         </dd>
 
         <dt class = "col-sm-2">
@@ -27,18 +42,17 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Genre)
         </dd>
+
         <dt class="col-sm-2">
             @Html.Label("Artist:")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Artist)
         </dd>
-        <dt class="col-sm-2">
-            @Html.Label("Video:")
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Video)
-        </dd>
+
+
+
+
     </dl>    
 </div>
 <p>

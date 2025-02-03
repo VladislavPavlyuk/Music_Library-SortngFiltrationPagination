@@ -16,7 +16,7 @@ namespace MusicLib.BLL.DTO
         public string? Release { get; set; }
 
         [DataType(DataType.Url)]
-        public string? Link { get; set; }
+        public string? YoutubeLink { get; set; }
         public int? GenreId { get; set; }
         public string? Genre { get; set; }
         public int? ArtistId { get; set; }

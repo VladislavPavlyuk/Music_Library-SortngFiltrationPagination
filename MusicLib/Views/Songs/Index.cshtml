@@ -17,8 +17,7 @@
         <th>Release</th>
         <th>Genre</th>
         <th>Artist</th>
-        <th>Video</th>
-        <th></th>
+        <th>Youtube Link</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -39,7 +38,10 @@
             @Html.DisplayFor(modelItem => item.Video)
         </td>
         <td>
-            <a asp-action="Watch" asp-controller="Videos" asp-route-id="@item.VideoId">Watch</a> |
+            @Html.DisplayFor(modelItem => item.YoutubeLink)
+        </td>
+        <td>
+            <a asp-action="Watch" asp-controller="Videos" asp-route-id="@item.VideoId">File</a> |
 
             
             <a asp-action="Details" asp-route-id="@item.Id">Detailes</a> 

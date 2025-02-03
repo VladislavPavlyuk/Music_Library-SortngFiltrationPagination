@@ -101,20 +101,20 @@ namespace MusicLib.DAL.EF
                 Artists.Add(new Artist { Name = "Aretha Franklin" });
                 Artists.Add(new Artist { Name = "Nirvana" });               
 
-                Songs.Add(new Song { Title = "Bohemian Rhapsody", Release = "1975", GenreId = 1, ArtistId = 7, Link = "https://www.youtube.com/watch?v=fJ9rUzIMcZQ" });
-                Songs.Add(new Song { Title = "Imagine", Release = "1971", GenreId = 1, ArtistId = 4, Link = "https://www.youtube.com/watch?v=DVg2EJvvlF8" });
-                Songs.Add(new Song { Title = "Hotel California", Release = "1977", GenreId = 1, ArtistId = 20, Link = "https://www.youtube.com/watch?v=EqPtz5qN7HM" });
-                Songs.Add(new Song { Title = "Stairway to Heaven", Release = "1971", GenreId = 1, ArtistId = 6, Link = "https://www.youtube.com/watch?v=QkF3oxziUI4" });
-                Songs.Add(new Song { Title = "Like a Rolling Stone", Release = "1965", GenreId = 1, ArtistId = 10, Link = "https://www.youtube.com/watch?v=JGfXiIXTpU0" });
-                Songs.Add(new Song { Title = "Hey Jude", Release = "1968", GenreId = 1, ArtistId = 1, Link = "https://www.youtube.com/watch?v=A_MjCqQoLLA" });
-                Songs.Add(new Song { Title = "Smells Like Teen Spirit", Release = "1991", GenreId = 1, ArtistId = 19, Link = "https://www.youtube.com/watch?v=hTWKbfoikeg" });
-                Songs.Add(new Song { Title = "What's Going On", Release = "1971", GenreId = 1, ArtistId = 16, Link = "https://www.youtube.com/watch?v=H-kA3UtBj4M" });
-                Songs.Add(new Song { Title = "Born to Run", Release = "1975", GenreId = 1, ArtistId = 11, Link = "https://www.youtube.com/watch?v=IxuThNgl3YA" });
-                Songs.Add(new Song { Title = "I Want to Hold Your Hand", Release = "1963", GenreId = 1, ArtistId = 1, Link = "https://www.youtube.com/watch?v=jenWdylTtzs" });
-                Songs.Add(new Song { Title = "Purple Haze", Release = "1967", GenreId = 1, ArtistId = 21, Link = "https://www.youtube.com/watch?v=ccvHJU5O4ZQ" });
-                Songs.Add(new Song { Title = "A Change Is Gonna Come", Release = "1964", GenreId = 1, ArtistId = 16, Link = "https://www.youtube.com/watch?v=wEBlaMOmKV4" });
-                Songs.Add(new Song { Title = "Lose Yourself", Release = "2002", GenreId = 1, ArtistId = 3, Link = "https://www.youtube.com/watch?v=_Yhyp-_hX2s" });
-                Songs.Add(new Song { Title = "Let It Be", Release = "1970", GenreId = 1, ArtistId = 1, Link = "https://www.youtube.com/watch?v=QDYfEBY9NM4" });           
+                Songs.Add(new Song { Title = "Bohemian Rhapsody", Release = "1975", GenreId = 1, ArtistId = 7, YoutubeLink = "https://www.youtube.com/watch?v=fJ9rUzIMcZQ" });
+                Songs.Add(new Song { Title = "Imagine", Release = "1971", GenreId = 1, ArtistId = 4, YoutubeLink = "https://www.youtube.com/watch?v=DVg2EJvvlF8" });
+                Songs.Add(new Song { Title = "Hotel California", Release = "1977", GenreId = 1, ArtistId = 20, YoutubeLink = "https://www.youtube.com/watch?v=EqPtz5qN7HM" });
+                Songs.Add(new Song { Title = "Stairway to Heaven", Release = "1971", GenreId = 1, ArtistId = 6, YoutubeLink = "https://www.youtube.com/watch?v=QkF3oxziUI4" });
+                Songs.Add(new Song { Title = "Like a Rolling Stone", Release = "1965", GenreId = 1, ArtistId = 10, YoutubeLink = "https://www.youtube.com/watch?v=JGfXiIXTpU0" });
+                Songs.Add(new Song { Title = "Hey Jude", Release = "1968", GenreId = 1, ArtistId = 1, YoutubeLink = "https://www.youtube.com/watch?v=A_MjCqQoLLA" });
+                Songs.Add(new Song { Title = "Smells Like Teen Spirit", Release = "1991", GenreId = 1, ArtistId = 19, YoutubeLink = "https://www.youtube.com/watch?v=hTWKbfoikeg" });
+                Songs.Add(new Song { Title = "What's Going On", Release = "1971", GenreId = 1, ArtistId = 16, YoutubeLink = "https://www.youtube.com/watch?v=H-kA3UtBj4M" });
+                Songs.Add(new Song { Title = "Born to Run", Release = "1975", GenreId = 1, ArtistId = 11, YoutubeLink = "https://www.youtube.com/watch?v=IxuThNgl3YA" });
+                Songs.Add(new Song { Title = "I Want to Hold Your Hand", Release = "1963", GenreId = 1, ArtistId = 1, YoutubeLink = "https://www.youtube.com/watch?v=jenWdylTtzs" });
+                Songs.Add(new Song { Title = "Purple Haze", Release = "1967", GenreId = 1, ArtistId = 21, YoutubeLink = "https://www.youtube.com/watch?v=ccvHJU5O4ZQ" });
+                Songs.Add(new Song { Title = "A Change Is Gonna Come", Release = "1964", GenreId = 1, ArtistId = 16, YoutubeLink = "https://www.youtube.com/watch?v=wEBlaMOmKV4" });
+                Songs.Add(new Song { Title = "Lose Yourself", Release = "2002", GenreId = 1, ArtistId = 3, YoutubeLink = "https://www.youtube.com/watch?v=_Yhyp-_hX2s" });
+                Songs.Add(new Song { Title = "Let It Be", Release = "1970", GenreId = 1, ArtistId = 1, YoutubeLink = "https://www.youtube.com/watch?v=QDYfEBY9NM4" });           
 
                 SaveChanges();
             }

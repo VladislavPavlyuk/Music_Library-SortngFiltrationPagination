@@ -26,7 +26,7 @@ namespace MusicLib.DAL.Repositories
         {
             var songs = await db.Songs.Include(o => o.Genre).Where(a => a.Id == id)
                 .Include(o => o.Artist).Where(a => a.Id == id)
-                .Include(o => o.Video).Where(a => a.Id == id)
+                .Include(o => o.Video).Where(a => a.Id == id)                
                 .ToListAsync();
             Song? song = songs?.FirstOrDefault();
             return song!;
@@ -34,7 +34,8 @@ namespace MusicLib.DAL.Repositories
 
         public async Task<Song> Get(string title)
         {         
-            var songs = await db.Songs.Include(o => o.Genre).Where(a => a.Title == title)
+            var songs = await db.Songs
+                .Include(o => o.Genre).Where(a => a.Title == title)
                 .Include(o => o.Artist).Where(a => a.Title == title)
                 .Include(o => o.Video).Where(a => a.Title == title)
                 .ToListAsync();
