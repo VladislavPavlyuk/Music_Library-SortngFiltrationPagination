@@ -21,7 +21,7 @@
         </th>
         <th>Genre</th>
         <th>Artist</th>
-        <th>Youtube Link</th>
+        <th>Youtube</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -38,25 +38,28 @@
         <td>
             @Html.DisplayFor(modelItem => item.Artist)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.YoutubeLink)
+            <td>
+                <button type="button" class="btn btn-outline-success"
+                        onclick="window.location.href='@item.YoutubeLink)'">
+                    Play
+            
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Video)
         </td>
 
         <td>
-            <a asp-action="Watch" asp-controller="Videos" asp-route-id="@item.VideoId">File</a> |
+                <a type="button" class="btn btn-outline-primary" asp-action="Watch" asp-controller="Videos" asp-route-id="@item.VideoId">File</a>  
 
             
-            <a asp-action="Details" asp-route-id="@item.Id">Detailes</a> 
+                <a type="button" class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Detailes</a>
 
                 @if (Context.Session.GetInt32("Role") == 1)
                 {
-                    <a>|</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                    <a>|</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a> </a>
+                    <a type="button" class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a> </a>
+                    <a type="button" class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 }
         </td>
     </tr>
