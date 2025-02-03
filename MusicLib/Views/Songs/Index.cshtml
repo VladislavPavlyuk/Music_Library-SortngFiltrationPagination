@@ -13,8 +13,12 @@
 </p>
 <table class="table-condensed" style="width:100%">
     <tr>
-        <th>Song</th>
-        <th>Release</th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Song</a>
+        </th>
+        <th>                
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">Release</a>
+        </th>
         <th>Genre</th>
         <th>Artist</th>
         <th>Youtube Link</th>
@@ -35,11 +39,12 @@
             @Html.DisplayFor(modelItem => item.Artist)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Video)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.YoutubeLink)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Video)
+        </td>
+
         <td>
             <a asp-action="Watch" asp-controller="Videos" asp-route-id="@item.VideoId">File</a> |
 

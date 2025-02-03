@@ -48,5 +48,29 @@ namespace MusicLib.DAL.Repositories
             if (artist != null)
                 db.Artists.Remove(artist);
         }
+
+        public async Task<IEnumerable<Artist>> GetItemsAsync(string sortOrder)
+        {
+            var items = from i in db.Artists
+                        select i;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    items = items.OrderByDescending(i => i.Name);
+                    break;
+                case "date":
+                    items = items.OrderBy(i => i.Birthdate);
+                    break;
+                case "date_desc":
+                    items = items.OrderByDescending(i => i.Name);
+                    break;
+                default:
+                    items = items.OrderBy(i => i.Birthdate);
+                    break;
+            }
+
+            return await items.ToListAsync();
+        }
     }
 }

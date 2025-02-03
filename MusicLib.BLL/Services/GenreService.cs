@@ -73,5 +73,10 @@ namespace MusicLib.BLL.Services
             return mapper.Map<IEnumerable<Genre>, IEnumerable<GenreDTO>>(await Database.Genres.GetAll());
         }
 
+        public async Task<IEnumerable<GenreDTO>> GetSortedItemsAsync(string sortOrder)
+        {
+            return (IEnumerable<GenreDTO>)await Database.Genres.GetItemsAsync(sortOrder);
+        }
+
     }
 }

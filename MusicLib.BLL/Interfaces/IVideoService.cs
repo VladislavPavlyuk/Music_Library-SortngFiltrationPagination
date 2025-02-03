@@ -9,5 +9,6 @@ namespace MusicLib.BLL.Interfaces
         Task DeleteVideo(int id);
         Task<VideoDTO> GetVideo(int id);
         Task<IEnumerable<VideoDTO>> GetVideos();
+        Task<IEnumerable<VideoDTO>> GetSortedItemsAsync(string sortOrder);
     }
 }

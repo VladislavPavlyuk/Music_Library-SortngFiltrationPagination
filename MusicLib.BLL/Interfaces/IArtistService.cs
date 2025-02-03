@@ -9,5 +9,6 @@ namespace MusicLib.BLL.Interfaces
         Task DeleteArtist(int id);
         Task<ArtistDTO> GetArtist(int id);
         Task<IEnumerable<ArtistDTO>> GetArtists();
+        Task<IEnumerable<ArtistDTO>> GetSortedItemsAsync(string sortOrder);
     }
 }

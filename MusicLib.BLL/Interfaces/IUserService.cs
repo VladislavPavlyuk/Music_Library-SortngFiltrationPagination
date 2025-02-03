@@ -10,6 +10,7 @@ namespace MusicLib.BLL.Interfaces
         Task<UserDTO> GetUser(int id);
         Task<UserDTO> GetUserByEmail(string email);
         Task<IEnumerable<UserDTO>> GetUsers();
+        Task<IEnumerable<UserDTO>> GetSortedItemsAsync(string sortOrder);
     }
 }
 

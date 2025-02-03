@@ -48,5 +48,23 @@ namespace MusicLib.DAL.Repositories
             if (role != null)
                 db.Roles.Remove(role);
         }
+
+        public async Task<IEnumerable<Role>> GetItemsAsync(string sortOrder)
+        {
+            var items = from i in db.Roles
+                        select i;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    items = items.OrderByDescending(i => i.Title);
+                    break;
+                default:
+                    items = items.OrderBy(i => i.Title);
+                    break;
+            }
+
+            return await items.ToListAsync();
+        }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MusicLib.BLL.DTO;
 using MusicLib.BLL.Interfaces;
 using MusicLib.BLL.Infrastructure;
-using MusicLib.DAL.Entities;
+using MusicLib.Models;
 
 namespace MusicLib.Controllers
 {
@@ -25,10 +25,21 @@ namespace MusicLib.Controllers
         }
 
         // GET: Songs
+
+        public async Task<IActionResult> Index(string sortOrder)
+        {
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? SortState.SongTitleDescending : "";
+            ViewData["DateSortParm"] = sortOrder == "date" ? SortState.SongReleaseDateAscending : "date";
+
+            var items = await songService.GetSortedItemsAsync(sortOrder);
+
+            return View(items);
+        }
+        /*
         public async Task<IActionResult> Index()
         {
             return View(await songService.GetSongs());
-        }
+        }*/
 
         // GET: Songs/Details/5
         public async Task<IActionResult> Details(int? id)

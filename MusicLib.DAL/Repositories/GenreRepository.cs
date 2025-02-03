@@ -50,5 +50,23 @@ namespace MusicLib.DAL.Repositories
                 db.Genres.Remove(genre);
             
         }
+
+        public async Task<IEnumerable<Genre>> GetItemsAsync(string sortOrder)
+        {
+            var items = from i in db.Genres
+                        select i;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    items = items.OrderByDescending(i => i.Title);
+                    break;
+                default:
+                    items = items.OrderBy(i => i.Title);
+                    break;
+            }
+
+            return await items.ToListAsync();
+        }
     }
 }

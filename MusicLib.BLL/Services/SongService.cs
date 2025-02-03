@@ -91,5 +91,19 @@ namespace MusicLib.BLL.Services
             return mapper.Map<IEnumerable<Song>, IEnumerable<SongDTO>>(await Database.Songs.GetAll());
         }
 
+        public async Task<IEnumerable<SongDTO>> GetSortedItemsAsync(string sortOrder)
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Song, SongDTO>()
+            .ForMember("Genre", opt => opt.MapFrom(c => c.Genre.Title))
+            .ForMember("Artist", opt => opt.MapFrom(c => c.Artist.Name))
+            .ForMember("Video", opt => opt.MapFrom(c => c.Video.FileName))
+            );
+
+            var mapper = new Mapper(config);
+
+            return mapper.Map<IEnumerable<Song>, IEnumerable<SongDTO>>(await Database.Songs.GetItemsAsync(sortOrder));
+            
+        }
+
     }
 }

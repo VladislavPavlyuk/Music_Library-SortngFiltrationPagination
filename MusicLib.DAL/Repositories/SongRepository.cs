@@ -60,5 +60,31 @@ namespace MusicLib.DAL.Repositories
                 if (song != null)
                     db.Songs.Remove(song);            
         }
+
+        public async Task<IEnumerable<Song>> GetItemsAsync(string sortOrder)
+        {
+            var items = from i in await db.Songs.Include(o => o.Genre).
+                                    Include(o => o.Artist).
+                                    Include(o => o.Video).ToListAsync()
+            select i;
+
+            switch (sortOrder)
+            {
+                case "SongTitleDescending":
+                    items = items.OrderByDescending(i => i.Title);
+                    break;
+                case "SongReleaseDateAscending":
+                    items = items.OrderBy(i => i.Release);
+                    break;
+                case "SongReleaseDateDescending":
+                    items = items.OrderByDescending(i => i.Release);
+                    break;
+                default:
+                    items = items.OrderBy(i => i.Title);
+                    break;
+            }
+
+            return  items;
+        }
     }
 }

@@ -55,5 +55,23 @@ namespace MusicLib.DAL.Repositories
                 if (user != null)
                     db.Users.Remove(user);            
         }
+        public async Task<IEnumerable<User>> GetItemsAsync(string sortOrder)
+        {
+            var items = from i in db.Users
+                        select i;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    items = items.OrderByDescending(i => i.Email);
+                    break;
+
+                default:
+                    items = items.OrderBy(i => i.Email);
+                    break;
+            }
+
+            return await items.ToListAsync();
+        }
     }
 }

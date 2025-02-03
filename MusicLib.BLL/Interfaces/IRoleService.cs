@@ -9,5 +9,6 @@ namespace MusicLib.BLL.Interfaces
         Task DeleteRole(int id);
         Task<RoleDTO> GetRole(int id);
         Task<IEnumerable<RoleDTO>> GetRoles();
+        Task<IEnumerable<RoleDTO>> GetSortedItemsAsync(string sortOrder);
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System;
-using MusicLib.DAL.Entities;
+﻿using MusicLib.DAL.Entities;
 
 namespace MusicLib.DAL.Interfaces
 {
@@ -12,5 +10,6 @@ namespace MusicLib.DAL.Interfaces
         Task Create(T item);
         void Update(T item);
         Task Delete(int id);
+        Task<IEnumerable<T>> GetItemsAsync(string sortOrder);
     }
 }

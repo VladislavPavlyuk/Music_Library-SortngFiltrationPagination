@@ -79,5 +79,10 @@ namespace MusicLib.BLL.Services
 
             return mapper.Map<IEnumerable<Video>, IEnumerable<VideoDTO>>(await Database.Videos.GetAll());
         }
+
+        public async Task<IEnumerable<VideoDTO>> GetSortedItemsAsync(string sortOrder)
+        {
+            return (IEnumerable<VideoDTO>)await Database.Users.GetItemsAsync(sortOrder);
+        }
     }
 }
