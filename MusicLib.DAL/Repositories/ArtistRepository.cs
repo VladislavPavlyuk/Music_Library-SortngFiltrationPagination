@@ -49,7 +49,7 @@ namespace MusicLib.DAL.Repositories
                 db.Artists.Remove(artist);
         }
 
-        public async Task<IEnumerable<Artist>> GetItemsAsync(string sortOrder)
+        public async Task<IEnumerable<Artist>> GetSortedAsync(string sortOrder)
         {
             var items = from i in db.Artists
                         select i;

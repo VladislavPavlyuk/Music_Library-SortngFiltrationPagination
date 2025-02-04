@@ -49,7 +49,7 @@ namespace MusicLib.DAL.Repositories
                 db.Roles.Remove(role);
         }
 
-        public async Task<IEnumerable<Role>> GetItemsAsync(string sortOrder)
+        public async Task<IEnumerable<Role>> GetSortedAsync(string sortOrder)
         {
             var items = from i in db.Roles
                         select i;

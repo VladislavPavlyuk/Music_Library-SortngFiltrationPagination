@@ -10,6 +10,6 @@ namespace MusicLib.DAL.Interfaces
         Task Create(T item);
         void Update(T item);
         Task Delete(int id);
-        Task<IEnumerable<T>> GetItemsAsync(string sortOrder);
+        Task<IEnumerable<T>> GetSortedAsync(string sortOrder);
     }
 }

@@ -4,6 +4,7 @@ using MusicLib.BLL.DTO;
 using MusicLib.BLL.Interfaces;
 using MusicLib.BLL.Infrastructure;
 using MusicLib.Models;
+using MusicLib.DAL.Entities;
 
 namespace MusicLib.Controllers
 {
@@ -25,15 +26,76 @@ namespace MusicLib.Controllers
         }
 
         // GET: Songs
-
-        public async Task<IActionResult> Index(string sortOrder)
+        // Sorting
+        public async Task<IActionResult> Index(string sortOrder, int? artist, int? genre)
         {
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? SortState.SongTitleDescending : "";
             ViewData["DateSortParm"] = sortOrder == SortState.SongReleaseDateAscending.ToString() ? SortState.SongReleaseDateDescending.ToString() : SortState.SongReleaseDateAscending.ToString();
 
-            var items = await songService.GetSortedItemsAsync(sortOrder);
+            var songs = await songService.GetSortedItemsAsync(sortOrder);
 
-            return View(items);
+            if (artist!=null && artist!=0)
+            {
+                songs = songs.Where(p => p.ArtistId == artist);
+            }
+
+            if (genre != null && genre != 0)
+            {
+                songs = songs.Where(p => p.GenreId == genre);
+            }
+
+            var genres = (await genreService.GetGenres()).ToList();
+
+            // устанавливаем начальный элемент, который позволит выбрать всех
+            genres.Insert(0, new GenreDTO { Title = "All", Id = 0 });
+
+            var artists = (await artistService.GetArtists()).ToList();
+            artists.Insert(0, new ArtistDTO { Name = "All", Id = 0 });
+
+            UserListViewModel viewModel = new UserListViewModel
+            {
+                Songs = songs.ToList(),
+
+                Genres = new SelectList(genres, "Id", "Title", genre),
+                
+                Artists = new SelectList(artists, "Id", "Name", artist)              
+            };
+           
+            return View(viewModel);
+        }
+
+        // GET: Songs
+        /*/ Filtering
+        public async Task<IActionResult> Index(string? artist, string? genre)
+        {
+            var songs = await songService.GetSongs();
+
+            if (!string.IsNullOrEmpty(artist))
+            {
+                songs = songs.Where(p => p.Artist == artist);
+            }
+
+            if (!string.IsNullOrEmpty(genre))
+            {
+                songs = songs.Where(p => p.Genre == genre);
+            }
+
+            var genres = await genreService.GetGenres();
+            // устанавливаем начальный элемент, который позволит выбрать всех
+            //genres. Insert(0, new GenreDTO { Title = "All", Id = 0 });
+
+            var artists = await artistService.GetArtists();
+
+            UserListViewModel viewModel = new UserListViewModel
+            {
+                Songs = songs.ToList(),
+                Genres = new SelectList(genres, "Id", "Title", genre),
+                Genre = genre,
+                Artists = new SelectList(artists, "Id", "Name", genre),
+                Artist = artist
+
+            };
+            return View(viewModel);
         }
         /*
         public async Task<IActionResult> Index()

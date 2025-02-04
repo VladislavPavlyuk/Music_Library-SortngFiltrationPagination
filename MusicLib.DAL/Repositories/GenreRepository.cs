@@ -51,7 +51,7 @@ namespace MusicLib.DAL.Repositories
             
         }
 
-        public async Task<IEnumerable<Genre>> GetItemsAsync(string sortOrder)
+        public async Task<IEnumerable<Genre>> GetSortedAsync(string sortOrder)
         {
             var items = from i in db.Genres
                         select i;

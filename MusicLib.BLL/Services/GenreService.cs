@@ -75,7 +75,7 @@ namespace MusicLib.BLL.Services
 
         public async Task<IEnumerable<GenreDTO>> GetSortedItemsAsync(string sortOrder)
         {
-            return (IEnumerable<GenreDTO>)await Database.Genres.GetItemsAsync(sortOrder);
+            return (IEnumerable<GenreDTO>)await Database.Genres.GetSortedAsync(sortOrder);
         }
 
     }

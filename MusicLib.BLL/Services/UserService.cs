@@ -105,7 +105,7 @@ namespace MusicLib.BLL.Services
 
         public async Task<IEnumerable<UserDTO>> GetSortedItemsAsync(string sortOrder)
         {
-            return (IEnumerable<UserDTO>)await Database.Users.GetItemsAsync(sortOrder);
+            return (IEnumerable<UserDTO>)await Database.Users.GetSortedAsync(sortOrder);
         }
 
     }

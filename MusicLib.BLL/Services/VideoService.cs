@@ -82,7 +82,7 @@ namespace MusicLib.BLL.Services
 
         public async Task<IEnumerable<VideoDTO>> GetSortedItemsAsync(string sortOrder)
         {
-            return (IEnumerable<VideoDTO>)await Database.Users.GetItemsAsync(sortOrder);
+            return (IEnumerable<VideoDTO>)await Database.Users.GetSortedAsync(sortOrder);
         }
     }
 }

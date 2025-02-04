@@ -61,7 +61,7 @@ namespace MusicLib.DAL.Repositories
                     db.Songs.Remove(song);            
         }
 
-        public async Task<IEnumerable<Song>> GetItemsAsync(string sortOrder)
+        public async Task<IEnumerable<Song>> GetSortedAsync(string sortOrder)
         {
             var items = from i in await db.Songs.Include(o => o.Genre).
                                     Include(o => o.Artist).

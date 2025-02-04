@@ -93,6 +93,7 @@ namespace MusicLib.BLL.Services
 
         public async Task<IEnumerable<SongDTO>> GetSortedItemsAsync(string sortOrder)
         {
+
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Song, SongDTO>()
             .ForMember("Genre", opt => opt.MapFrom(c => c.Genre.Title))
             .ForMember("Artist", opt => opt.MapFrom(c => c.Artist.Name))
@@ -101,9 +102,8 @@ namespace MusicLib.BLL.Services
 
             var mapper = new Mapper(config);
 
-            return mapper.Map<IEnumerable<Song>, IEnumerable<SongDTO>>(await Database.Songs.GetItemsAsync(sortOrder));
+            return mapper.Map<IEnumerable<Song>, IEnumerable<SongDTO>>(await Database.Songs.GetSortedAsync(sortOrder));
             
         }
-
     }
 }

@@ -41,7 +41,7 @@ namespace MusicLib.DAL.Repositories
             if (video != null)
                 db.Videos.Remove(video);
         }
-        public async Task<IEnumerable<Video>> GetItemsAsync(string sortOrder)
+        public async Task<IEnumerable<Video>> GetSortedAsync(string sortOrder)
         {
             var items = from i in db.Videos
                         select i;
