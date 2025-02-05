@@ -80,27 +80,27 @@ namespace MusicLib.DAL.EF
                 Genres.Add(new Genre { Title = "Other" });
                 
                 Artists.Add(new Artist { Name = "The Beatles"  });
-                Artists.Add(new Artist { Name = "Elvis Presley", Birthdate = "01/08/1935" });
-                Artists.Add(new Artist { Name = "Michael Jackson", Birthdate = "08/29/1958" });
-                Artists.Add(new Artist { Name = "Elton John", Birthdate = "03/25/1947" });
-                Artists.Add(new Artist { Name = "Madonna", Birthdate = "08/16/1958" });
+                Artists.Add(new Artist { Name = "Elvis Presley", BirthDate = "01/08/1935" });
+                Artists.Add(new Artist { Name = "Michael Jackson", BirthDate = "08/29/1958" });
+                Artists.Add(new Artist { Name = "Elton John", BirthDate = "03/25/1947" });
+                Artists.Add(new Artist { Name = "Madonna", BirthDate = "08/16/1958" });
                 Artists.Add(new Artist { Name = "Led Zeppelin" });
                 Artists.Add(new Artist { Name = "Pink Floyd" });
                 Artists.Add(new Artist { Name = "Queen" });
                 Artists.Add(new Artist { Name = "The Rolling Stones" });
-                Artists.Add(new Artist { Name = "Bob Dylan", Birthdate = "05/24/1941" });
-                Artists.Add(new Artist { Name = "David Bowie", Birthdate = "01/08/1947" });
-                Artists.Add(new Artist { Name = "Bruce Springsteen", Birthdate = "09/23/1949" });
-                Artists.Add(new Artist { Name = "Prince", Birthdate = "06/07/1958" });
+                Artists.Add(new Artist { Name = "Bob Dylan", BirthDate = "05/24/1941" });
+                Artists.Add(new Artist { Name = "David Bowie", BirthDate = "01/08/1947" });
+                Artists.Add(new Artist { Name = "Bruce Springsteen", BirthDate = "09/23/1949" });
+                Artists.Add(new Artist { Name = "Prince", BirthDate = "06/07/1958" });
                 Artists.Add(new Artist { Name = "The Who" });
-                Artists.Add(new Artist { Name = "Stevie Wonder", Birthdate = "05/13/1950" });
-                Artists.Add(new Artist { Name = "Bob Marley", Birthdate = "02/06/1945" });
-                Artists.Add(new Artist { Name = "James Brown", Birthdate = "05/03/1933" });
+                Artists.Add(new Artist { Name = "Stevie Wonder", BirthDate = "05/13/1950" });
+                Artists.Add(new Artist { Name = "Bob Marley", BirthDate = "02/06/1945" });
+                Artists.Add(new Artist { Name = "James Brown", BirthDate = "05/03/1933" });
                 Artists.Add(new Artist { Name = "U2" });
                 Artists.Add(new Artist { Name = "The Doors" });
-                Artists.Add(new Artist { Name = "Aretha Franklin", Birthdate = "03/25/1942" });
+                Artists.Add(new Artist { Name = "Aretha Franklin", BirthDate = "03/25/1942" });
                 Artists.Add(new Artist { Name = "Nirvana" });
-                Artists.Add(new Artist { Name = "Jimi Hendrix", Birthdate = "11/27/1942" });
+                Artists.Add(new Artist { Name = "Jimi Hendrix", BirthDate = "11/27/1942" });
 
 
                 Songs.Add(new Song { Title = "Bohemian Rhapsody", Release = "1975", GenreId = 1, ArtistId = 7, YoutubeLink = "https://www.youtube.com/watch?v=fJ9rUzIMcZQ" });

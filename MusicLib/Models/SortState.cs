@@ -1,16 +1,16 @@
 ﻿namespace MusicLib.Models
 {
     public enum SortState
-    {
-        ArtistNameAscending,
-        ArtistNameDescending,
-        ArtistBirthDateAscending,
-        ArtistBirthDateDescending,
-        GenreTitleAscending,
-        GenreTitleDescending,
-        SongTitleAscending,
-        SongTitleDescending,
-        SongReleaseDateAscending,
-        SongReleaseDateDescending
+    {        
+        ArtistNameAsc,
+        ArtistNameDesc,
+        ArtistBirthDateAsc,
+        ArtistBirthDateDesc,
+        GenreTitleAsc,
+        GenreTitleDesc,
+        SongTitleAsc,
+        SongTitleDesc,
+        SongReleaseDateAsc,
+        SongReleaseDateDesc
     }
 }

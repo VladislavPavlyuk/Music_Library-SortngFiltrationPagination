@@ -4,7 +4,6 @@ using MusicLib.BLL.DTO;
 using MusicLib.BLL.Interfaces;
 using MusicLib.BLL.Infrastructure;
 using MusicLib.Models;
-using MusicLib.DAL.Entities;
 
 namespace MusicLib.Controllers
 {
@@ -26,82 +25,49 @@ namespace MusicLib.Controllers
         }
 
         // GET: Songs
-        // Sorting
-        public async Task<IActionResult> Index(string sortOrder, int? artist, int? genre)
+        // Sorting + filtering + pagination
+        public async Task<IActionResult> Index(
+            SortState sortOrder, 
+            int artist = 0, 
+            int genre = 0, 
+            int page = 1)
         {
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? SortState.SongTitleDescending : "";
-            ViewData["DateSortParm"] = sortOrder == SortState.SongReleaseDateAscending.ToString() ? SortState.SongReleaseDateDescending.ToString() : SortState.SongReleaseDateAscending.ToString();
+            int pageSize = 10;
 
-            var songs = await songService.GetSortedItemsAsync(sortOrder);
+            //получаем сортированный список песен
+            var songs = await songService.GetSortedItemsAsync(sortOrder.ToString());
 
-            if (artist!=null && artist!=0)
-            {
+            //фильтрация
+            if (artist != null && artist!=0)  {
                 songs = songs.Where(p => p.ArtistId == artist);
             }
 
-            if (genre != null && genre != 0)
-            {
+            if (genre != null && genre != 0)  {
                 songs = songs.Where(p => p.GenreId == genre);
             }
 
             var genres = (await genreService.GetGenres()).ToList();
+            var artists = (await artistService.GetArtists()).ToList();
 
             // устанавливаем начальный элемент, который позволит выбрать всех
             genres.Insert(0, new GenreDTO { Title = "All", Id = 0 });
+            artists.Insert(0, new ArtistDTO { Name = "All", Id = 0 });            
 
-            var artists = (await artistService.GetArtists()).ToList();
-            artists.Insert(0, new ArtistDTO { Name = "All", Id = 0 });
+            // пагинация
+            var count = songs.Count();
+            var items = songs.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            UserListViewModel viewModel = new UserListViewModel
-            {
-                Songs = songs.ToList(),
-
-                Genres = new SelectList(genres, "Id", "Title", genre),
+            IndexViewModel viewModel = new IndexViewModel
+            (
+                items,
+                new PageViewModel(count, page, pageSize),
+                new FilterViewModel(genres, genre, artists, artist),
+                new SortViewModel(sortOrder)
                 
-                Artists = new SelectList(artists, "Id", "Name", artist)              
-            };
-           
+            );
+
             return View(viewModel);
         }
-
-        // GET: Songs
-        /*/ Filtering
-        public async Task<IActionResult> Index(string? artist, string? genre)
-        {
-            var songs = await songService.GetSongs();
-
-            if (!string.IsNullOrEmpty(artist))
-            {
-                songs = songs.Where(p => p.Artist == artist);
-            }
-
-            if (!string.IsNullOrEmpty(genre))
-            {
-                songs = songs.Where(p => p.Genre == genre);
-            }
-
-            var genres = await genreService.GetGenres();
-            // устанавливаем начальный элемент, который позволит выбрать всех
-            //genres. Insert(0, new GenreDTO { Title = "All", Id = 0 });
-
-            var artists = await artistService.GetArtists();
-
-            UserListViewModel viewModel = new UserListViewModel
-            {
-                Songs = songs.ToList(),
-                Genres = new SelectList(genres, "Id", "Title", genre),
-                Genre = genre,
-                Artists = new SelectList(artists, "Id", "Name", genre),
-                Artist = artist
-
-            };
-            return View(viewModel);
-        }
-        /*
-        public async Task<IActionResult> Index()
-        {
-            return View(await songService.GetSongs());
-        }*/
 
         // GET: Songs/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -22,7 +22,7 @@ namespace MusicLib.BLL.Services
             {
                 Id = artistDto.Id,
                 Name = artistDto.Name,
-                Birthdate = artistDto.Birthdate
+                BirthDate = artistDto.BirthDate
 
             };
             await Database.Artists.Create(artist);
@@ -36,7 +36,7 @@ namespace MusicLib.BLL.Services
             {
                 Id = artistDto.Id,
                 Name = artistDto.Name,
-                Birthdate = artistDto.Birthdate
+                BirthDate = artistDto.BirthDate
             };
             Database.Artists.Update(artist);
 
@@ -68,7 +68,7 @@ namespace MusicLib.BLL.Services
             {
                 Id = artist.Id,
                 Name = artist.Name,
-                Birthdate = artist.Birthdate
+                BirthDate = artist.BirthDate
             };
         }
 

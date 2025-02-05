@@ -63,27 +63,48 @@ namespace MusicLib.DAL.Repositories
 
         public async Task<IEnumerable<Song>> GetSortedAsync(string sortOrder)
         {
-            var items = from i in await db.Songs.Include(o => o.Genre).
-                                    Include(o => o.Artist).
-                                    Include(o => o.Video).ToListAsync()
+            var items = from i in await db.Songs.
+                        Include(o => o.Genre).
+                        Include(o => o.Artist).
+                        Include(o => o.Video).ToListAsync()
             select i;
 
             switch (sortOrder)
             {
-                case "SongTitleDescending":
+                 case "ArtistNameAsc":
+                    items = items.OrderBy(i => i.Artist!.Name);
+                    break;
+                case "ArtistNameDesc":
+                    items = items.OrderByDescending(i => i.Artist!.Name);
+                    break;
+                case "ArtistBirthDateAsc":
+                    items = items.OrderBy(i => i.Artist!.BirthDate);
+                    break;
+                case "ArtistBirthDateDesc":
+                    items = items.OrderByDescending(i => i.Artist!.BirthDate);
+                    break;
+                case "GenreTitleAsc":
+                    items = items.OrderBy(i => i.Genre!.Title);
+                    break;
+                case "GenreTitleDesc":
+                    items = items.OrderByDescending(i => i.Genre!.Title);
+                    break;
+                /*case "SongTitleAsc":
+                    items = items.OrderBy(i => i.Title);
+                    break;*/
+                case "SongTitleDesc":
                     items = items.OrderByDescending(i => i.Title);
                     break;
-                case "SongReleaseDateAscending":
+                case "SongReleaseDateAsc":
                     items = items.OrderBy(i => i.Release);
                     break;
-                case "SongReleaseDateDescending":
+                case "SongReleaseDateDesc":
                     items = items.OrderByDescending(i => i.Release);
                     break;
                 default:
                     items = items.OrderBy(i => i.Title);
                     break;
             }
-
             return  items;
         }
     }

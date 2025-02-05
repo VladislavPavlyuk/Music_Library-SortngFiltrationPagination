@@ -60,13 +60,13 @@ namespace MusicLib.DAL.Repositories
                     items = items.OrderByDescending(i => i.Name);
                     break;
                 case "date":
-                    items = items.OrderBy(i => i.Birthdate);
+                    items = items.OrderBy(i => i.BirthDate);
                     break;
                 case "date_desc":
                     items = items.OrderByDescending(i => i.Name);
                     break;
                 default:
-                    items = items.OrderBy(i => i.Birthdate);
+                    items = items.OrderBy(i => i.BirthDate);
                     break;
             }
 

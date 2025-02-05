@@ -14,7 +14,7 @@
             @Html.Label("Name")
         </th>
         <th>
-            @Html.Label("Birthdate")
+            @Html.Label("BirthDate")
         </th>
         <th></th>
     </tr>
@@ -26,7 +26,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Birthdate)
+                @Html.DisplayFor(modelItem => item.BirthDate)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.Id">Detailes</a>

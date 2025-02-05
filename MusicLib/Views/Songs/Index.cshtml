@@ -1,9 +1,10 @@
-﻿@model MusicLib.Models.UserListViewModel 
+﻿@model MusicLib.Models.IndexViewModel 
 
 @{
-    ViewBag.Title = "Index";
-    //@model IEnumerable<MusicLib.BLL.DTO.SongDTO>
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <h2>List of Songs</h2>
 
@@ -12,29 +13,47 @@
 </p>
 <form method="get">
     <div>
+        <label>Artist: </label>
+        <select name="artist" asp-items="Model.FilterViewModel.Artists"></select>
 
         <label>Genre: </label>
-        <select name="genre" asp-items="Model.Genres"></select>
-
-        <label>Artist: </label>
-        <select name="artist" asp-items="Model.Artists"></select>
+        <select name="genre" asp-items="Model.FilterViewModel.Genres"></select>
 
         <input type="submit" value="Filter" />
     </div>
 </form>
+
 <table class="table-condensed" style="width:100%">
     <tr>
         <th>
-            <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Song</a>
+            <a asp-action="Index" 
+            asp-route-sortOrder="@(Model.SortViewModel.SongTitleSort)"
+            asp-route-genre="@(Model.FilterViewModel.SelectedGenre)"
+            asp-route-artist="@(Model.FilterViewModel.SelectedArtist)">Song</a>
         </th>
         <th>                
-            <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">Release</a>
+            <a asp-action="Index" 
+            asp-route-sortOrder="@(Model.SortViewModel.SongReleaseDateSort)"
+            asp-route-genre="@(Model.FilterViewModel.SelectedGenre)"
+            asp-route-artist="@(Model.FilterViewModel.SelectedArtist)">Release Date</a>
         </th>
-        <th>Genre</th>
-        <th>Artist</th>
+        <th>
+            <a asp-action="Index" 
+            asp-route-sortOrder="@(Model.SortViewModel.GenreTitleSort)"
+            asp-route-genre="@(Model.FilterViewModel.SelectedGenre)"
+            asp-route-artist="@(Model.FilterViewModel.SelectedArtist)">Genre</a>
+        </th>
+        <th>
+            <a asp-action="Index" 
+            asp-route-sortOrder="@(Model.SortViewModel.ArtistNameSort)"
+            asp-route-genre="@(Model.FilterViewModel.SelectedGenre)"
+            asp-route-artist="@(Model.FilterViewModel.SelectedArtist)">Artist</a>
+        </th>
         <th>Youtube</th>
     </tr>
 
+@if (Model.Songs != null)
+{    
     @foreach (var item in Model.Songs)
     {
     <tr>
@@ -75,5 +94,35 @@
                 }
         </td>
     </tr>
+    }
 }
+else
+{
+    <tr>No songs available.</tr>
+}
+
 </table>
+<p>
+    @if (Model.PageViewModel.HasPreviousPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber - 1)"           
+           asp-route-artist="@(Model.FilterViewModel.SelectedArtist)"
+           asp-route-genre="@(Model.FilterViewModel.SelectedGenre)"
+           asp-route-sortorder="@(Model.SortViewModel.Current)"
+           class="glyphicon glyphicon-chevron-left">
+            Reward
+        </a>
+    }
+    @if (Model.PageViewModel.HasNextPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber + 1)"           
+           asp-route-artist="@(Model.FilterViewModel.SelectedArtist)"
+           asp-route-genre="@(Model.FilterViewModel.SelectedGenre)"
+           asp-route-sortorder="@(Model.SortViewModel.Current)"
+           class="glyphicon glyphicon-chevron-right">
+            Forward
+        </a>
+    }
+</p>

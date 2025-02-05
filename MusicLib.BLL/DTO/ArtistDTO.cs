@@ -13,6 +13,6 @@ namespace MusicLib.BLL.DTO
         public string? Name { get; set; }
 
         [DataType(DataType.Date)]   
-        public string? Birthdate { get; set; }
+        public string? BirthDate { get; set; }
     }
 }
